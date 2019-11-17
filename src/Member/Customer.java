@@ -2,6 +2,8 @@ package Member;
 
 import java.util.Scanner;
 
+import content.content;
+
 import java.util.ArrayList;
 
  
@@ -114,10 +116,12 @@ public class Customer{
 
 		ArrayList<Member> listC = new ArrayList<Member>();	//탈퇴회원
 
-		
+	/*
+	 * 회원 회원1 = new 회원(); 회원1.아이디 = "user1"; 회원1.비밀번호 = "pass1"; 회원1.이름 = "name1";
+	 */
 	public void customer_flow() {	
 
-
+		System.out.println("[회원관리]");
 		while(true) {
 
 			System.out.print("명령어를 입력해주세요: ");
@@ -146,7 +150,7 @@ public class Customer{
 
 				System.out.println("delete : 데이터 삭제");				
 
-				System.out.println("exit: 나가기");
+				System.out.println("move: 게시판으로 이동");
 
 			}
 
@@ -536,42 +540,26 @@ public class Customer{
 				
 
 				System.out.println("1번 : 일반회원");
-
 				System.out.println("2번 : 관리자회원");				
-
 				System.out.println("3번 : 탈퇴회원");
-
 				
 
 				System.out.print("어느 모드로 로그인할지 입력해주세요: ");
 
 				Scanner scannerr = new Scanner(System.in);			
-
-				String commanddddd = scannerr.next();
-
-				
+				String commanddddd = scannerr.next();				
 
 				if(commanddddd.equals("1번")) {
-
 					
-
-					  System.out.println("로그인을 해주세요.");
-
-					  
+					  System.out.println("로그인을 해주세요.");					  
 
 					  System.out.print("ID : "); 
-
 					  String id = scannerr.next();
 
-					  
-
 					  System.out.print("PW : "); 
-
 					  String pw = scannerr.next(); 
 
-					  int isExistId = 0;
-
-					  
+					  int isExistId = 0;			  
 
 					  for(int i=0; i < listA.size(); i++) { 
 
@@ -587,7 +575,6 @@ public class Customer{
 								  member.name = listA.get(i).name;
 								  member.permission = listA.get(i).permission;
 								  break; 
-
 							  } 
 
 							  else {
@@ -595,51 +582,31 @@ public class Customer{
 								  System.out.println("비밀번호가 틀렸습니다.");
 
 								  break; 
-
 							  } 
-
 						  }	 
-
 					}
-
-					  
 
 					  if(isExistId == 0) { 
-
 						  System.out.println("없는 아이디입니다."); 
-
-					}
-
-					 
+					}				 
 
 				}
-
 				
 				//관리자
 				else if(commanddddd.equals("2번")) {
 
 					System.out.println("로그인을 해주세요.");
 
-					
-
 					System.out.print("ID : ");
-
-					String id = scannerr.next();
-
-					
+					String id = scannerr.next();					
 
 					System.out.print("PW : ");
-
 					String pw = scannerr.next();
 
 					int isExistId = 0;
 
-					
-
 					for(int i=0; i < listB.size(); i++)
-
 					{
-
 						if(id.equals(listB.get(i).id)) {
 
 							isExistId = 1;
@@ -653,120 +620,80 @@ public class Customer{
 								member.permission = listB.get(i).permission;
 								
 								break;
-
 							}
 
 							else {
-
 								System.out.println("비밀번호가 틀렸습니다.");
-
 								break;
-
 							}
-
 						}
-
 					}
-
 					
-
 					if(isExistId == 0) {
-
 						System.out.println("없는 아이디입니다.");
-
 					}
-
-				}
-
-				
+				}			
 
 				else if(commanddddd.equals("3번")) {
 
 					System.out.println("로그인을 해주세요.");
-
 					
-
 					System.out.print("ID : ");
-
 					String id = scannerr.next();
 
-					
-
 					System.out.print("PW : ");
-
 					String pw = scannerr.next();
 
 					int isExistId = 0;
 
-					
-
 					for(int i=0; i < listC.size(); i++)
 
 					{
-
 						if(id.equals(listC.get(i).id)) {
 
 							isExistId = 1;
 
 							if(pw.contentEquals(listC.get(i).pw)) {
-
+								
 								System.out.println(listC.get(i).name + "님 반갑습니다!");
 								//게시물 탈퇴 회원 정보 세팅 
 								member.id = listC.get(i).id;
 								member.name = listC.get(i).name;
 								member.permission = listC.get(i).permission;
 								break;
-
+								
 							}
 
 							else {
-
 								System.out.println("비밀번호가 틀렸습니다.");
-
 								break;
-
 							}
-
 						}
-
-					}
-
-					
+					}					
 
 					if(isExistId == 0) {
-
 						System.out.println("없는 아이디입니다.");
-
 					}
-
 				}
 
 				System.out.println("");
 
 			}
 
-			
+			else if(command.equals("move")) {
 
-			else if(command.equals("exit")) {
+				System.out.println("게시판으로 이동합니다.");
 
-				System.out.println("프로그램이 종료합니다.");
-
-				
-
+				content b = new content();
+				b.board_flow();
 				break;
-
 			}
 
-			
-
 			else {
-
 				System.out.println("올바른 명령어를 입력해주세요.");
 
- 
-
 			}			
-
+			System.out.println("");
 		}
 
 	}
