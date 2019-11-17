@@ -520,24 +520,17 @@ public class Customer{
 					System.out.println("회원" + index + "번의" + "생년월일: " + listC.get(index).birth);
 
 					System.out.println("회원" + index + "번의" + "혈액형: " + listC.get(index).blood);
-
 					System.out.println("회원" + index + "번의" + "자기소개: " + listC.get(index).self);
-
 					System.out.println("========================");
 
 				}
-
 				
-
 				System.out.println("");
-
 			}
 
 			
 			
 			else if(command.equals("login")) {	
-
-				
 
 				System.out.println("1번 : 일반회원");
 				System.out.println("2번 : 관리자회원");				
